@@ -5,6 +5,8 @@
 > **依赖**：无（最顶层）
 > **被依赖**：所有其他 SPEC
 
+> 当前开发状态、发布状态和待办事项见 [`../current-status.md`](../current-status.md)。旧 SPEC 中的范围和 checklist 可能滞后，判断当前实现时以代码和 current-status 为准。
+
 ---
 
 ## 1. 一句话定义

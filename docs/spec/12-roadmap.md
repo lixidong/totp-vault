@@ -5,6 +5,24 @@
 > **依赖**：所有 SPEC
 > **被依赖**：无
 
+> 当前开发状态见 [`../current-status.md`](../current-status.md)。本文件保留原始规划脉络，并在顶部维护最新路线图摘要。
+
+---
+
+## 0. 当前路线图摘要（2026-06-08）
+
+已发布 `v0.1.0`：核心密码库、WebDAV、TOTP、网页登录填充、保存新账号提示、导入导出、自动锁定、主密码提示、GitHub Actions release 已完成。
+
+下一阶段建议优先级：
+
+1. 验证 GitHub Actions Release 与 release asset。
+2. 忽略网站列表：保存新账号提示支持永久忽略域名，Options 支持管理。
+3. 同步冲突处理：冲突提示、手动合并或 entry 级合并。
+4. 填充兼容性增强：复杂登录流、分步登录、Shadow DOM。
+5. 测试补强：URL、KDBX、Content Script、Playwright E2E。
+6. 发布体验继续完善：README、安装说明、权限和隐私说明。
+7. 主密码修改。
+
 ---
 
 ## 1. 4 阶段路线图
