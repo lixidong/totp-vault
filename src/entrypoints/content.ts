@@ -42,6 +42,7 @@ class AutofillController {
   private otpDebounceId: number | null = null;
   private lastAccounts: Account[] = [];
   private otpFilled = false;
+  private otpUnlockPrompted = false;
   private pendingCredential: PendingCredential | null = null;
   private latestPassword = '';
   private promptedCredentialKeys = new Set<string>();
@@ -355,7 +356,15 @@ class AutofillController {
     if (!target) return;
 
     try {
-      if (!(await isVaultUnlocked())) return;
+      if (!(await isVaultUnlocked())) {
+        if (!this.otpUnlockPrompted) {
+          this.otpUnlockPrompted = true;
+          await sendMessage({ type: 'openUnlockPopup' }).catch(() => undefined);
+          showPageNotice('检测到验证码输入框，请先解锁 totp-vault 获取 TOTP 验证码。');
+        }
+        return;
+      }
+      this.otpUnlockPrompted = false;
       const accounts = this.lastAccounts.length > 0
         ? this.lastAccounts
         : await sendMessage({ type: 'matchAccountsForUrl', url: location.href });

@@ -1,7 +1,7 @@
 {
   "name": "totp-vault",
   "description": "Password manager + TOTP authenticator, data on your WebDAV",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "scripts": {
