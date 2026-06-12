@@ -1,8 +1,8 @@
 # 当前开发状态
 
-> 更新时间：2026-06-11  
+> 更新时间：2026-06-12  
 > 项目地址：https://github.com/lixidong/totp-vault  
-> 当前版本：0.1.1 / 待发布 tag `v0.1.1`
+> 当前版本：0.1.2 / 待发布 tag `v0.1.2`
 
 ## 给下一次 AI 的快速入口
 
@@ -67,6 +67,14 @@
 - 图标已换成“锁 + TOTP 时钟”风格。
 - Options 有版本号、权限说明、安全提示和备份提示。
 
+### 扩展 ID 与跨重装保留
+
+- `wxt.config.ts` 写入了固定的 `manifest.key`（派生自扩展 ID `hpgicjhhchdmnkandnlilgpnhgpcnkbm`），
+  用户从 GitHub Release 下载 zip 拖拽安装后扩展 ID 保持不变。
+- `chrome.storage.local` 中所有数据（WebDAV 加密配置、`settings`、`ignoreList`、`deviceId`）在重新安装后自动保留。
+- `settings`、`ignoreList`、`deviceId` 还会双写到 `chrome.storage.sync`，便于多设备共享非敏感设置。
+- **注意**：不要更换 `manifest.key`，否则会切换到新扩展 ID，所有用户本机数据失效。
+
 ### 测试与发布
 
 - 已有 Vitest 单元测试：
@@ -79,7 +87,8 @@
 - Git 仓库已初始化并推送到 GitHub。
 - 已添加 `.github/workflows/release.yml`：push `v*` tag 时自动测试、类型检查、打包并创建 GitHub Release。
 - `v0.1.0` tag 已推送，GitHub Actions 应自动生成 Release。
-- `v0.1.1` 已完成本地发布验证，待提交并推送 tag。
+- `v0.1.1` 已完成本地发布验证，已推送 tag。
+- `v0.1.2` 已完成本地发布验证，待提交并推送 tag（主要改动：固定扩展 ID 避免重装后丢失 WebDAV 配置；非敏感设置双写到 chrome.storage.sync）。
 
 ## 当前重要实现细节
 
